@@ -5,7 +5,7 @@ function Footer(){
     return (
         <>
         <div className="footer">
-            Developed By Prerna Sharma with ❤️
+            Built with ❤️ By Prerna Sharma
         </div>
         </>
     )
