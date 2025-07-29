@@ -1,25 +1,37 @@
-import { useEffect, useState } from "react"
+import { useCallback, useEffect, useMemo, useState } from "react"
 import "../css/header.css"
 import { use } from "react";
 import copy from 'copy-to-clipboard';
 import { toast, Bounce } from 'react-toastify';
+import Test from "./Test";
+
 
 function TextBox() {
     const [letterCount, setLetterCount] = useState(0);
     const [wordCount, setWordCount] = useState(0);
     const [text, setText] = useState("")
 
-    function upper() {
+    const ComplexCom = useMemo(() => {
+        let a = 1;
+        for (let index = 0; index < 1000; index++) {
+            a = a + index
+
+        }
+        console.log("hey")
+        return <h1>{a}</h1>
+    }, [])
+
+    const upper = useCallback(() => {
         setText(text.toUpperCase())
         updateTextarea(text)
-    }
+    }, [text])
 
-    function lower() {
-        setText(text.toLowerCase())
+    const lower = useCallback(() => {
+        setText((prev) => (prev.toLowerCase()))
         updateTextarea(text)
-    }
+    },[text])
 
-    function swapCase() {
+    const swapCase = useCallback(()=>{
         let newSting = text
             .split('') // Convert the string to an array of characters
             .map(char => {
@@ -37,9 +49,9 @@ function TextBox() {
             .join('')
         setText(newSting)
         updateTextarea(text)
-    }
-    function title() {
+    },[text])
 
+    const title =useCallback(()=>{
         setText(text
             .split('\n') // Split by newlines
             .map(line =>
@@ -51,12 +63,12 @@ function TextBox() {
                     .join(' ')
             )
             .join('\n'))
-
-
         updateTextarea(text)
-    }
 
-    function capitalize() {
+    },[text])
+
+
+    const capitalize = useCallback(()=>{
         if (text.length === 0) {
             setText(text)
         }
@@ -80,9 +92,9 @@ function TextBox() {
                 ).join('\n'))
         }
         updateTextarea(text)
-    }
+    },[text])
 
-    function handleCopyClick() {
+    const handleCopyClick = useCallback(()=>{
         if (text === "") {
             toast.error('Please Enter some text first!');
         }
@@ -101,22 +113,28 @@ function TextBox() {
                 transition: Bounce,
             });
         }
-    }
-    function handleClearClick() {
+    },[text])
+
+    const handleClearClick = useCallback(()=>{
         setText("")
         setLetterCount(0)
         setWordCount(0)
         updateTextarea(text)
-    }
-    function updateTextarea(updated_text) {
+    },[text])
+
+    const updateTextarea = useCallback(()=>{
         document.getElementById("text-area").value = updated_text;
-    }
+
+    },[text])
     useEffect(() => {
         // console.log(text)
-    }, [text])
+    }, [text, wordCount])
 
     return (
         <>
+            {/* <Test /> */}
+            {/* <ComplexCom /> */}
+            {/* {ComplexCom} */}
             <div className="textBox-conatiner">
                 <textarea name="text" placeholder="Enter Your Text" id="text-area" value={text} className="textArea" onChange={(e) => {
                     setLetterCount(e.target.value.length)
@@ -135,7 +153,8 @@ function TextBox() {
             <div className="buttons-conatiner">
                 <i className="letterCount">Letter Count: {letterCount}</i>
                 <i className="wordCount">&nbsp; | Word Count: {wordCount}</i>
-                <button onClick={upper} className="button-item ">Uppercase</button>
+
+                <button onClick={upper} title="Convert to Upper Case" className="button-item ">Uppercase</button>
                 <button onClick={lower} className="button-item">Lowercase</button>
                 <button onClick={title} className="button-item">Titlecase</button>
                 <button onClick={capitalize} className="button-item">Capitalize</button>

@@ -1,9 +1,11 @@
 :root {
-    --background: rgb(74, 10, 106);
+    --background: rgb(211, 98, 11);
     --text-color: white;
-    --button-color: blueviolet;
-    --button-border-color: rgb(126, 86, 164);
-    --button-hover-bg: rgb(99, 21, 171);
+    --button-color: rgb(211, 98, 11);
+    --button-border-color: rgb(176, 81, 9);
+    --button-hover-bg: rgb(230, 109, 17);
+    --textarea-bg: rgb(30, 2, 2);
+    --button-shadow-color: rgb(225, 191, 164);
 }
 
 * {
@@ -25,7 +27,8 @@ body {
     box-sizing: border-box;
     font-size: 30px;
     align-items: center;
-
+    border-bottom: 2px solid var(--button-border-color);
+    /* box-shadow: 0px 9px var(--button-shadow-color); */
 
 }
 
@@ -51,8 +54,8 @@ body {
     min-height: 550px;
     border: 3px solid var(--button-color);
     font-size: medium;
-    background-color: rgb(30, 2, 2);
-    color: white;
+    background-color: var(--textarea-bg);
+    color: var(--text-color);
     border-radius: 5px;
     padding: 10px;
 }
@@ -77,14 +80,14 @@ body {
     border: 2px solid var(--button-border-color);
     margin: 2vw;
     margin-left: 10px;
-    box-shadow: 0 5px rgb(201, 180, 220);
+    box-shadow: 0 5px var(--button-shadow-color);
 
 }
 
 .button-item:hover {
     background-color: var(--button-hover-bg);
     /* height: 38px; */
-    box-shadow: 0 5px rgb(162, 150, 173);
+    box-shadow: 0 5px var(--button-shadow-color);
 
 }
 
@@ -94,6 +97,8 @@ body {
     background-color: var(--background);
     box-sizing: border-box;
     text-align: center;
+    border-top: 2px solid var(--button-border-color);
+
 
 }
 
