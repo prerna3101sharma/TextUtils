@@ -1,7 +1,4 @@
 import { useState } from 'react'
-// import reactLogo from './assets/react.svg'
-// import viteLogo from '/vite.svg'
-// import './App.css'
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer, Bounce } from 'react-toastify';
 import Header from './components/Header'

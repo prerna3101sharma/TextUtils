@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import "/Users/prernasharma/Desktop/front-end learning/textUtil/Text_Util/src/css/header.css"
+import "../css/header.css"
 import { use } from "react";
 import copy from 'copy-to-clipboard';
 import { toast, Bounce } from 'react-toastify';

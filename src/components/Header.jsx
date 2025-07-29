@@ -1,4 +1,4 @@
-import "/Users/prernasharma/Desktop/front-end learning/textUtil/Text_Util/src/css/header.css"
+import "../css/header.css"
 
 function Header(){
     return(
