@@ -4,7 +4,7 @@ import { useState } from 'react'
 // import './App.css'
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer, Bounce } from 'react-toastify';
-import Header from './components/header'
+import Header from './components/Header'
 import TextBox from './components/TextBox'
 import Footer from './components/Footer'
 
